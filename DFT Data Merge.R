@@ -32,17 +32,21 @@ myvars <- c("DFT.Code", "To", "Shift.", "Qty.Ltr.", "FatPercent", "SNFPercent", 
 data1M <- data1[myvars]
 data2M <- data2[myvars]
 data3M <- data3[myvars]
+data4M <- dataM[myvars]
 
 data12M <- rbind(data1M,data2M)
 data123M <- rbind(data12M,data3M)
-data123M$DateF <- as.Date(data123M$Date,format="%d/%m/%Y")
-data123M$month <- months(data123M$DateF)
+data1234M <- rbind(data123M,data4M)
+data1234M$DateF <- as.Date(data1234M$Date,format="%d/%m/%Y")
+data1234M$month <- months(data1234M$DateF)
 floor(as.numeric(data123M$DateF))
-data123M$year <- as.numeric(format(data123M$DateF, "%Y"))
-data123M$monthyear <- paste(data123M$month,data123M$year,sep="-")
-data123M$SDVC <- with(data123M,ifelse(is.na(data123M$LG.Code),0,1))
+data1234M$year <- as.numeric(format(data1234M$DateF, "%Y"))
+data1234M$monthyear <- paste(data1234M$month,data123M$year,sep="-")
+data1234M$SDVC <- with(data1234M,ifelse(is.na(data1234M$LG.Code),0,1))
+data1234MF <- data1234M[which(data1234M$year < 2015),]
+
                      
-write.csv(data123M,"/Users/heatherkrause/Desktop/DFTJulyThruOct2104.csv")
+write.csv(data1234MF,"/Users/heatherkrause/Documents/R/dft-reports/DFTJulyThruNovember2104_Analysis.csv")
 
 dataM <- read.csv("/Users/heatherkrause/Desktop/DFTJulyThruOct2104.csv")
 dataM$AveLitre <- capply(dataM$Qty.Ltr.,dataM$DFT.codeCP,mean,na.rm=T)
