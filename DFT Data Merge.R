@@ -47,7 +47,8 @@ data1234M$DateF <- as.Date(data1234M$Date,format="%d/%m/%Y")
 data1234M$month <- months(data1234M$DateF)
 floor(as.numeric(data123M$DateF))
 data1234M$year <- as.numeric(format(data1234M$DateF, "%Y"))
-data1234M$monthyear <- paste(data1234M$month,data123M$year,sep="-")
+data1234M$monthF <- as.numeric(format(data1234M$DateF, "%m"))
+data1234M$monthyear <- paste(data1234M$monthF,data1234M$year,sep="")
 data1234M$SDVC <- with(data1234M,ifelse(is.na(data1234M$LG.Code),0,1))
 data1234MF <- data1234M[which(data1234M$year < 2015),]
 
@@ -116,3 +117,6 @@ dataM$LitreDiffOctNovCP <- dataM$AveLitNovCP - dataM$AveLitOctCP #large numbers 
 
 write.csv(dataM,"/Users/heatherkrause/Documents/R/dft-reports/DFTJulyThruNov2104_Analysis.csv")
 write.csv(dataM,"/Users/heatherkrause/Documents/R/dft-reports/DFTJulyThruNov2104_Tableau.csv")
+
+dataUp <- up(dataM, ~DFT.codeCP)
+write.csv(dataUp,"/Users/heatherkrause/Documents/R/dft-reports/DFT_ThruDec2014_Up.csv")
