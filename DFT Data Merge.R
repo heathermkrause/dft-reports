@@ -6,6 +6,11 @@ dataM$month = as.numeric(format(dataM$datetxt, format = "%m"))
 dataM$monthyear <- paste(dataM$month,dataM$year,sep="-")
 dataM$SDVC <- with(dataM,ifelse(is.na(dataM$LG.Code),0,1))
 
+dataM$monthF[dataM$month==11] <- "November"
+dataM$monthF[dataM$month==12] <- "December"
+
+dataM$month <- dataM$monthF
+
 dataM$AveLitre <- capply(dataM$Qty.Ltr.,dataM$DFT.codeCP,mean,na.rm=T)
 dataM$AveFatPerc <- capply(dataM$FatPercent,dataM$DFT.codeCP,mean,na.rm=T)
 dataM$AveSNFPercent <- capply(dataM$SNFPercent,dataM$DFT.codeCP,mean,na.rm=T)
@@ -16,7 +21,7 @@ dataM$AveLitreMonthCP <- capply(dataM$Qty.Ltr.,paste(dataM$Collection.Point.Name
 dataM$AveFatPercMonthCP <- capply(dataM$FatPercent,paste(dataM$Collection.Point.Name,dataM$month),mean,na.rm=T)
 dataM$AveSNFPercentMonthCP <- capply(dataM$SNFPercent,paste(dataM$Collection.Point.Name,dataM$month),mean,na.rm=T)
 
-dataM$FatPercJuly <- with(dataM,ifelse(dataM$month=="July",dataM$AveFatPercMonth,0))
+dataM$FatPercNov <- with(dataM,ifelse(dataM$monthF=="November",dataM$AveFatPercMonth,0))
 dataM$FatPercAug <- with(dataM,ifelse(dataM$month=="August",dataM$AveFatPercMonth,0))
 dataM$FatPercSept <- with(dataM,ifelse(dataM$month=="September",dataM$AveFatPercMonth,0))
 dataM$FatPercOct <- with(dataM,ifelse(dataM$month=="October",dataM$AveFatPercMonth,0))
