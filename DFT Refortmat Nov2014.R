@@ -167,7 +167,7 @@ data4$Collection.Point.Name <- data4$Collection.Point.NameF
 data1$DFT.codeCP <- paste(data1$DFT.Code,data1$CollectionPoint, sep = "")
 data4$DFT.codeCP <- paste(data4$DFT.Code,data4$Collection.Point.NameF, sep = "")
 dataM <- merge(data1,data4,by=c("DFT.codeCP"),all=T)
-dataM$DFT.Code <- dataM$DFT.Code.x
+dataM$DFT.Code <- dataM$DFT.Code.y
 dataM$Shift. <- dataM$Shift
 dataM$Collection.Point.Name <- dataM$CollectionPoint
 myvars <- c("DFT.Code", "To", "Shift.", "Qty.Ltr.", "FatPercent", "SNFPercent", "Rate.Rs", "AmountRS", "Site",
@@ -176,7 +176,7 @@ myvars <- c("DFT.Code", "To", "Shift.", "Qty.Ltr.", "FatPercent", "SNFPercent", 
 
 dataM <- dataM[myvars]
 
-dataM <- dataM[which(dataM$Qty.Ltr.   < 50),]
+###dataM <- dataM[which(dataM$Qty.Ltr.   < 50),]
 
 #Separate Dates into parts #DOESN"T WORK
 dataM$DateString <- as.character(dataM$DateF)
@@ -185,7 +185,7 @@ data1$Split1 <- sapply(data1$Split, "[[", 1)
 
 dataM$DateF <- as.Date(dataM$Date,format="%d/%m/%Y")
 
-write.csv(dataM,"/Users/heatherkrause/Desktop/DFTJSeptOct2014_Correct.csv")
+write.csv(dataM,"/Users/heatherkrause/Dropbox/Projects/SDVC II/DFT Data/Final DFT Data Uploaded to Marjan Dashboard/DFTNov2014_Correct.csv")
 
 
 
