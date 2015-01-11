@@ -1,0 +1,6 @@
+rm(list = ls())
+library(nlme)
+library(lattice)
+library(car)
+library(spida)
+library(magrittr)
