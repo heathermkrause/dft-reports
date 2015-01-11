@@ -13,7 +13,9 @@ dataN <- data[which(data$DateF=="2014-11-24"),]
 
 dataO1 <- read.csv("/Users/heatherkrause/Documents/R/dft-reports/Survey_Data_27Oct2014_revised.csv")
 dataN1 <- read.csv("/Users/heatherkrause/Documents/R/dft-reports/Nov242014_CheckInData.csv",colClasses = "character")
-dataON <- rbind(dataO1,dataN1)
+dataD1 <- read.csv("/Users/heatherkrause/Documents/R/dft-reports/CheckIn Survey December.csv",colClasses = "character")
+dataONa <- rbind(dataO1,dataN1)
+dataON <- rbind(dataONa,dataD1)
 
 dataON$Collection.Point[dataON$Collection_Point=="Amosh"] <- "Amosh"
   dataON$Collection.Point[dataON$Collection_Point=="Annadanagar"] <- "Annadanogor"
@@ -48,3 +50,8 @@ dataON$Collection.Point[dataON$Collection_Point=="Amosh"] <- "Amosh"
   dataON$Collection.Point[dataON$Collection_Point=="Banani Bazar"] <- "Banani Bazar"
   dataON$Collection.Point[dataON$Collection_Point=="Khalkhola"] <- "Khalkola"
   dataON$Collection.Point[dataON$Collection_Point=="Batiya"] <- "Batia"
+
+dataON$DFT.codeCP <- paste(dataON$DFTID,dataON$Collection.Point, sep = "")
+dataON$LitresPerCow <- as.numeric(dataON$Quantity)/as.numeric(dataON$Cow_Qty)
+
+write.csv(dataON,"/Users/heatherkrause/Desktop/CheckinInData_OctNovDec2014.csv")
