@@ -5,8 +5,11 @@ library(car)
 library(spida)
 library(magrittr)
 
-#names needed for final data ingest DFT.Code, To, Shift., Qty.Ltr., FatPercent, SNFPercent, Rate.Rs, AmountRS, Site,
-#  Date, Collection.Point.Name, LG.Code, Sex..W.1..M.2., Upazila, District, Village, Time
+#names needed for final data ingest to Marjan Dashboard DFT.Code, To, Shift., Qty.Ltr., FatPercent, SNFPercent, Rate.Rs, AmountRS, Site,
+#  Date, Collection.Point.Name, LG.Code, Sex..W.1..M.2., Upazila, District, Village, Time, DFT.codeCP, Producer.Name, Under.Chilling.Plant (check this)
+
+#names needed for final data ingest to Tableau Dashboard DFT.Code, To, Shift., Qty.Ltr., FatPercent, SNFPercent, Rate.Rs, AmountRS, Site,
+#  Date, Collection.Point.Name (In sentence case), LG.Code, Sex..W.1..M.2., Upazila, District, Village, Time, DFT.codeCP, Producer.Name, Under.Chilling.Plant, plus all the calculation variables (ie AveLitreMont)
 
 data1 <- read.csv("/Users/heatherkrause/Dropbox/Projects/SDVC II/DFT Data/Formatted DFT Data from Elance/DFT November14 formatted.csv", comment.char = "", colClasses = "character")
 
