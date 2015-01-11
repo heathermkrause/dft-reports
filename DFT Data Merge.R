@@ -1,10 +1,10 @@
 #Merge Eeach new month
 
-floor(as.numeric(dataM$Date))
-dataM$year <- as.numeric(format(dataM$Date, "%Y"))
+dataM$datetxt <- as.Date(dataM$Date,,format="%d/%m/%Y")
+dataM$year = as.numeric(format(dataM$datetxt, format = "%Y"))
+dataM$month = as.numeric(format(dataM$datetxt, format = "%m"))
 dataM$monthyear <- paste(dataM$month,dataM$year,sep="-")
 dataM$SDVC <- with(dataM,ifelse(is.na(dataM$LG.Code),0,1))
-
 
 
 
