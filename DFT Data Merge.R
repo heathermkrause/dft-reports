@@ -1,4 +1,17 @@
-DFTDataFMergeJuly2014
+#Merge Eeach new month
+
+floor(as.numeric(dataM$Date))
+dataM$year <- as.numeric(format(dataM$Date, "%Y"))
+dataM$monthyear <- paste(dataM$month,dataM$year,sep="-")
+dataM$SDVC <- with(dataM,ifelse(is.na(dataM$LG.Code),0,1))
+
+
+
+
+
+
+
+###DFTDataFMergeJuly2014
 data1 <- read.csv("/Users/heatherkrause/Desktop/DFTDataFMergeJuly2014.csv")
 data2 <- read.csv("/Users/heatherkrause/Desktop/DFTAugust2014_Correct.csv")
 data3 <- read.csv("/Users/heatherkrause/Desktop/DFTJSeptOct2014_Correct.csv")
