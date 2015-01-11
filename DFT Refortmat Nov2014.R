@@ -187,6 +187,11 @@ dataM$DateF <- as.Date(dataM$Date,format="%d/%m/%Y")
 
 write.csv(dataM,"/Users/heatherkrause/Dropbox/Projects/SDVC II/DFT Data/Final DFT Data Uploaded to Marjan Dashboard/DFTNov2014_Correct.csv")
 
+DFT_ThruDec2014_Tableau_SDVC_Only
+data <- read.csv("/Users/heatherkrause/Documents/R/dft-reports/DFT_ThruDec2014_Tableau_SDVC_Only.csv")
+hsu <- up( hs, ~ school )
+dataUp <- up(data, ~DFT.codeCP)
+write.csv(dataUp,"/Users/heatherkrause/Documents/R/dft-reports/DFT_ThruDec2014_Tableau_SDVC_Only_Up.csv")
 
 
 
