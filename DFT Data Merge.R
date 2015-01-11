@@ -21,10 +21,9 @@ dataM$AveLitreMonthCP <- capply(dataM$Qty.Ltr.,paste(dataM$Collection.Point.Name
 dataM$AveFatPercMonthCP <- capply(dataM$FatPercent,paste(dataM$Collection.Point.Name,dataM$month),mean,na.rm=T)
 dataM$AveSNFPercentMonthCP <- capply(dataM$SNFPercent,paste(dataM$Collection.Point.Name,dataM$month),mean,na.rm=T)
 
-dataM$FatPercNov <- with(dataM,ifelse(dataM$monthF=="November",dataM$AveFatPercMonth,0))
-dataM$FatPercAug <- with(dataM,ifelse(dataM$month=="August",dataM$AveFatPercMonth,0))
-dataM$FatPercSept <- with(dataM,ifelse(dataM$month=="September",dataM$AveFatPercMonth,0))
-dataM$FatPercOct <- with(dataM,ifelse(dataM$month=="October",dataM$AveFatPercMonth,0))
+dataM$FatPercNov <- with(dataM,ifelse(dataM$month=="November",dataM$AveFatPercMonth,0))
+dataM$FatPercDec <- with(dataM,ifelse(dataM$month=="December",dataM$AveFatPercMonth,0))
+
 
 dataM$AveLitJuly <- with(dataM,ifelse(dataM$month=="July",dataM$AveLitreMonth,0))
 dataM$AveLitAug <- with(dataM,ifelse(dataM$month=="August",dataM$AveLitreMonth,0))
@@ -65,9 +64,9 @@ write.csv(dataM,"/Users/heatherkrause/Desktop/DFTJulyThruOct2104.csv")
 
 
 ###DFTDataFMergeJuly2014
-data1 <- read.csv("/Users/heatherkrause/Desktop/DFTDataFMergeJuly2014.csv")
-data2 <- read.csv("/Users/heatherkrause/Desktop/DFTAugust2014_Correct.csv")
-data3 <- read.csv("/Users/heatherkrause/Desktop/DFTJSeptOct2014_Correct.csv")
+data1 <- read.csv("/Users/heatherkrause/Documents/R/dft-reports/Final DFT Data Uploaded to Marjan Dashboard/DFTDataFMergeJuly2014.csv")
+data2 <- read.csv("/Users/heatherkrause/Documents/R/dft-reports/Final DFT Data Uploaded to Marjan Dashboard/DFTAugust2014_Correct.csv")
+data3 <- read.csv("/Users/heatherkrause/Documents/R/dft-reports/Final DFT Data Uploaded to Marjan Dashboard/DFTSeptOct2014_Correct.csv")
 myvars <- c("DFT.Code", "To", "Shift.", "Qty.Ltr.", "FatPercent", "SNFPercent", "Rate.Rs", "AmountRS", "Site",
             "Date", "Collection.Point.Name", "LG.Code", "Sex..W.1..M.2.", "Upazila", "District", "Village","Para", "DFT.codeCP","Producer.Name",
             "Under.Chilling.Plant" )
