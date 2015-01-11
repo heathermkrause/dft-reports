@@ -55,3 +55,21 @@ dataON$DFT.codeCP <- paste(dataON$DFTID,dataON$Collection.Point, sep = "")
 dataON$LitresPerCow <- as.numeric(dataON$Quantity)/as.numeric(dataON$Cow_Qty)
 
 write.csv(dataON,"/Users/heatherkrause/Desktop/CheckinInData_OctNovDec2014.csv")
+
+dataA <- read.csv("/Users/heatherkrause/Documents/R/dft-reports/DFTJulyThruNovember2104_Analysis.csv")
+dataB <- read.csv("/Users/heatherkrause/Documents/R/dft-reports/CheckinInData_OctNovDec2014.csv")
+
+
+dataA$DateF1 <- as.Date(dataA$Date,format="%d/%m/%Y")
+dataA$day <- as.numeric(format(dataA$DateF1, "%d"))
+dataA$months <- as.numeric(format(dataA$DateF1, "%m"))
+dataA$DMY <- paste(dataA$day,dataA$months,dataA$year,sep="")
+
+dataB$Shift. <- dataB$Shift
+
+dataB$DMY <- paste(dataB$Day,dataB$Month,dataB$Year,sep="")
+
+dataAB <- merge(dataA,dataB, by=c("DFT.codeCP","DMY","Shift."),all=T)
+
+write.csv(dataAB,"/Users/heatherkrause/Desktop/Checkin+BRAC OctNov 2014.csv")
+
