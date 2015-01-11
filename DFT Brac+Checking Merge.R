@@ -1,3 +1,10 @@
+library(nlme)
+library(lattice)
+library(car)
+library(spida)
+library(magrittr)
+
+
 #Merge BRAC DFT data with checkin survey data
 
 data <- read.csv("/Users/heatherkrause/Documents/R/dft-reports/DFTJulyThruNovember2104_Analysis.csv")

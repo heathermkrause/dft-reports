@@ -1,3 +1,9 @@
+library(nlme)
+library(lattice)
+library(car)
+library(spida)
+library(magrittr)
+
 #Merge Eeach new month
 
 dataM$datetxt <- as.Date(dataM$Date,,format="%d/%m/%Y")
